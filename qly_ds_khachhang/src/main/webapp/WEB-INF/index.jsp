@@ -7,10 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h1>test</h1>
+
+<a href="/customers">Back to list</a>.
+
+<%
+    List<Customer> customers = (List<Customer>) request.getAttribute("customers");
+%>
+
+</body>
 </html>
