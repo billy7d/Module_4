@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<a th:href="@{/student/create}">
+    Add new Student
+</a>
+
+<table id="students">
+    <tr>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+
+    <tr th:each ="row: ${students}">
+        <td th:text = "${row.getName()}"></td>
+        <td th:text = "${row.getGrade()}"></td>
+        <td><a th:href="@{/student/{id}/edit(id=${row.id})}">edit</a></td>
+        <td><a th:href="@{/student/{id}/delete(id=${row.id})}">delete</a></td>
+        <td><a th:href="@{/student/{id}/view(id=${row.id})}">view</a></td>
+
+
+    </tr>
+</table>
+
+</body>
+</html>
