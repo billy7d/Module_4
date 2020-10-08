@@ -13,17 +13,21 @@
     <tr>
         <th>Name</th>
         <th>Grade</th>
+        <th>Image</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
+
     </tr>
 
-    <tr th:each ="row: ${students}">
-        <td th:text = "${row.getName()}"></td>
-        <td th:text = "${row.getGrade()}"></td>
-        <td><a th:href="@{/student/{id}/edit(id=${row.id})}">edit</a></td>
-        <td><a th:href="@{/student/{id}/delete(id=${row.id})}">delete</a></td>
-        <td><a th:href="@{/student/{id}/view(id=${row.id})}">view</a></td>
+
+    <tr th:each="s : ${students}">
+        <td th:text="${s.getName()}"></td>
+        <td th:text="${s.getGrade()}"></td>
+        <td><img th:src="@{'/i/'+${s.image}}" width="100"/></td>
+        <td><a th:href="@{/student/{id}/edit(id=${s.id})}">edit</a></td>
+        <td><a th:href="@{/student/{id}/delete(id=${s.id})}">delete</a></td>
+        <td><a th:href="@{/student/{id}/view(id=${s.id})}">view</a></td>
 
 
     </tr>

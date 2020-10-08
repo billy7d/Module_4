@@ -11,7 +11,7 @@ public interface InterfaceStudentService {
 
     public void removeStudent(int id);
 
-    public void updateStudent (int id, Student student);
+    public void updateStudent(int id, Student student);
 
     public Student findById(int id);
 
