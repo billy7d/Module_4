@@ -4,8 +4,9 @@ public class Student {
     private int id;
     private String name;
     private String grade;
+    private String image;
 
-    public Student(){
+    public Student() {
 
     }
 
@@ -13,6 +14,13 @@ public class Student {
         this.id = id;
         this.name = name;
         this.grade = grade;
+    }
+
+    public Student(int id, String name, String grade, String image) {
+        this.id = id;
+        this.name = name;
+        this.grade = grade;
+        this.image = image;
     }
 
     public int getId() {
@@ -37,6 +45,14 @@ public class Student {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 

@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService implements InterfaceStudentService {
-   private static ArrayList<Student> students;
+    private static ArrayList<Student> students;
 
-   static{
-       students = new ArrayList<>();
-       students.add(new Student(1,"Hung","C0620K1"));
-       students.add(new Student(2,"Tuan","C0620K1"));
-       students.add(new Student(3,"Nghia","C0620K1"));
-       students.add(new Student(1,"Dung","C0620K1"));
-   }
+    static {
+        students = new ArrayList<>();
+        students.add(new Student(1, "Hung", "C0620K1"));
+        students.add(new Student(2, "Tuan", "C0620K1"));
+        students.add(new Student(3, "Nghia", "C0620K1"));
+        students.add(new Student(1, "Dung", "C0620K1"));
+    }
 
     @Override
     public List<Student> findAll() {
@@ -28,9 +28,9 @@ public class StudentService implements InterfaceStudentService {
 
     @Override
     public void removeStudent(int id) {
-        for (Student student: students){
-            if  (student.getId() == id){
-                students.remove(id);
+        for (Student student : students) {
+            if (student.getId() == id) {
+                students.remove(student);
                 return;
             }
         }
@@ -38,18 +38,19 @@ public class StudentService implements InterfaceStudentService {
 
     @Override
     public void updateStudent(int id, Student student) {
-        for (Student student1: students){
-            if (student1.getId() == id){
+        for (Student student1 : students) {
+            if (student1.getId() == id) {
                 student1.setName(student.getName());
                 student1.setGrade(student.getGrade());
+                return;
             }
         }
     }
 
     @Override
     public Student findById(int id) {
-        for (Student student : students){
-            if (student.getId() == id){
+        for (Student student : students) {
+            if (student.getId() == id) {
                 return student;
             }
         }

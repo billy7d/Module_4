@@ -1,5 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head >
+<head>
     <meta charset="UTF-8">
     <title>Create</title>
 </head>
@@ -7,20 +7,18 @@
 <h3>Add Student</h3>
 <p>
     <a th:href="@{/}">
-        Back to student list
-    </a>
+        Back to student list</a>
 </p>
-<div id="form">
-    <form th:action="@{/student/create}" th:object="${student}"
-          method="post">
+<div>
+    <form action="#" th:action="@{/create}" th:object="${student}" method="post" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>
         <div>
             <label>Name</label>
-            <input type="text" th:field="*{name}"/>
+            <input type="text" th:id="*{id}" name="name" th:field="*{name}"/>
         </div>
         <div>
             <label>Grade</label>
-            <input type="text" th:field="*{grade}"/>
+            <input type="text" th:id="*{id}" name="grade" th:field="*{grade}"/>
         </div>
 
         <input type="submit" value="Save"/>
