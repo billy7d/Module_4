@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h3>Modify Customer</h3>
+<p>
+    <a th:href="@{/}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/student/edit}" th:object="${student}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" th:field="*{name}" th:value="${student.name}"/>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" name="grade" th:field="*{grade}" th:value="${student.grade}"/>
+        </div>
+
+        <input type="submit" value="Change"/>
+    </form>
+</div>
+
+</body>
+</html>
