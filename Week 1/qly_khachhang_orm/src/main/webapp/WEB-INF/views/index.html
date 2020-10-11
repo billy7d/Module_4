@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/create}">Create new Customer</a>
+</div>
+<table border="1" >
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="c,hung: ${list}">
+        <td th:text="${hung.index}"></td>
+        <td th:text="${c.name}"></td>
+        <td th:text="${c.address}"></td>
+        <td>
+            <a th:href="@{'/student/edit/' + ${c.id}}">Edit</a>
+            <a th:href="@{'/student/delete/' + ${c.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+
+</div>
+</body>
+</html>
