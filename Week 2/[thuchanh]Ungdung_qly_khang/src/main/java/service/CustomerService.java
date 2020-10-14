@@ -8,9 +8,9 @@ public interface CustomerService {
 
     List<Customer> findAll();
 
-    Customer findById(int id);
+    Customer findById(Integer id);
 
     void save(Customer customer);
 
-    void remove(int id);
+    void remove(Integer id);
 }

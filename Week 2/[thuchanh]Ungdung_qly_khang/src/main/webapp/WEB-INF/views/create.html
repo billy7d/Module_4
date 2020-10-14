@@ -5,8 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="" >
+<form th:action="@{/create/customer}" th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        <tr>
+            <td> <input type="text" th:field="*{firstName}"/></td>
+            <td> <input type="text" th:field="*{lastName}"/></td>
 
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="save"/>
+            </td>
+        </tr>
+    </table>
 </form>
 
 </body>

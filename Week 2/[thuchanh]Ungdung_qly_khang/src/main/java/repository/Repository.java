@@ -5,10 +5,10 @@ import java.util.List;
 public interface Repository<T> {
     List<T> findAll();
 
-    T findById(int id);
+    T findById(Integer id);
 
     void save(T model);
 
-    void remove(int id);
+    void remove(Integer id);
 
 }

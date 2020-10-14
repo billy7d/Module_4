@@ -23,7 +23,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Customer findById(int id) {
+    public Customer findById(Integer id) {
         String query="SELECT c FROM Customer c WHERE c.id =:id";
         TypedQuery<Customer> typedQuery = em.createQuery(query,Customer.class);
         typedQuery.setParameter("id",id);
@@ -32,7 +32,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void save(Customer customer) {
-        if (customer.getId()>0){
+        if (customer.getId()!=null){
             em.merge(customer);
         } else {
             em.persist(customer);
@@ -40,10 +40,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void remove(int id) {
+    public void remove(Integer id) {
         Customer customer = findById(id);
         if (customer!=null){
-            em.remove(id);
+            em.remove(customer);
         }
     }
 }

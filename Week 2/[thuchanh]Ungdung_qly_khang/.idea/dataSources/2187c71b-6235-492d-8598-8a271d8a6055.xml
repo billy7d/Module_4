@@ -919,25 +919,47 @@ SELECT|sys.sys_config:null
 </ObjectGrants>
     </user>
     <table id="287" parent="2" name="sv"/>
-    <column id="288" parent="287" name="MaSV">
+    <table id="288" parent="5" name="customer">
+      <Engine>MyISAM</Engine>
+    </table>
+    <column id="289" parent="287" name="MaSV">
       <Position>1</Position>
       <DataType>varchar(3)|0s</DataType>
     </column>
-    <column id="289" parent="287" name="tenSv">
+    <column id="290" parent="287" name="tenSv">
       <Position>2</Position>
       <DataType>varchar(25)|0s</DataType>
     </column>
-    <column id="290" parent="287" name="ngaylamviec">
+    <column id="291" parent="287" name="ngaylamviec">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="291" parent="287" name="ngayhientai">
+    <column id="292" parent="287" name="ngayhientai">
       <Position>4</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="292" parent="287" name="them">
+    <column id="293" parent="287" name="them">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
+    <column id="294" parent="288" name="id">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="295" parent="288" name="firstName">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="296" parent="288" name="lastName">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="297" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

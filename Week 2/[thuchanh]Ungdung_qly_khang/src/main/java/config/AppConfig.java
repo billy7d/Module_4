@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -53,22 +54,25 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         return new CustomerServiceImpl();
     }
 
+
+    //Thymeleaf Configuration
     @Bean
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setPrefix("/WEB-INF/views");
+        templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
         return templateResolver;
     }
 
     @Bean
     public TemplateEngine templateEngine(){
-        TemplateEngine templateEngine = new TemplateEngine();
+        TemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
+
     @Bean
     public ThymeleafViewResolver viewResolver(){
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -76,22 +80,22 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         return viewResolver;
     }
 
-    //JPA
-
+//    JPA configuration
     @Bean
-    @Qualifier("entityManager")
-    public EntityManager entityManager(EntityManagerFactory entityManagerFactory){
+    @Qualifier(value = "entityManager")
+    public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] {"model"});
+        em.setPackagesToScan(new String[]{"model"});
+
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(addtionalProperties());
+        em.setJpaProperties(additionalProperties());
         return em;
     }
 
@@ -99,9 +103,9 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/cms");
-        dataSource.setUsername( "root" );
-        dataSource.setPassword( "hung30111995" );
+        dataSource.setUrl("jdbc:mysql://localhost:3306/jpa_test?useSSL=false");
+        dataSource.setUsername("root");
+        dataSource.setPassword("hung30111995");
         return dataSource;
     }
 
@@ -112,11 +116,11 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         return transactionManager;
     }
 
-    Properties addtionalProperties(){
+    Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
-
     }
 }
+
